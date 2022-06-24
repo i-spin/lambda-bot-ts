@@ -62,8 +62,8 @@ export default {
   options,
 
   run: async (interaction: CommandInteraction) => {
-    if (!interaction.isCommand()) return;
-    if (!interaction.memberPermissions?.has('MANAGE_MESSAGES')) {
+    if (!interaction.isChatInputCommand()) return;
+    if (!interaction.memberPermissions?.has('ManageMessages')) {
       interaction.reply({ embeds: [embedUtils.error('You do not have permission to use this command.')] });
       return;
     }

@@ -1,5 +1,5 @@
 import ms from 'ms';
-import { Client, CommandInteraction, MessageEmbed } from 'discord.js';
+import { Client, CommandInteraction, EmbedBuilder } from 'discord.js';
 import size from '../utils/bytes';
 import listPlugins from '../utils/plugins';
 
@@ -10,7 +10,7 @@ export default {
 
   run: async (interaction: CommandInteraction, _client: Client) => {
     const pluginList = (await listPlugins.listPlugins()).data;
-    const pluginEmbed = new MessageEmbed().setTitle('Plugins Informations');
+    const pluginEmbed = new EmbedBuilder().setTitle('Plugins Informations');
     pluginList.forEach((plugin) => {
       pluginEmbed.addFields([{
         name: plugin.name,

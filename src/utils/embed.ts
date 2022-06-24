@@ -1,14 +1,14 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 
-const error = (msg: string) => new MessageEmbed()
+const error = (msg: string) => new EmbedBuilder()
   .setTitle('Error')
   .addFields([{ name: 'Info', value: `${msg}` }])
-  .setColor('RED');
+  .setColor('Red');
 
-const success = (msg: string) => new MessageEmbed()
+const success = (msg: string) => new EmbedBuilder()
   .setTitle('Success')
   .addFields([{ name: 'Info', value: `${msg}` }])
-  .setColor('GREEN');
+  .setColor('Green');
 
 const embedUtils = {
   error,

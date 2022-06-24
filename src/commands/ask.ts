@@ -1,4 +1,4 @@
-import { Client, CommandInteraction, MessageEmbed } from 'discord.js';
+import { Client, CommandInteraction, EmbedBuilder } from 'discord.js';
 import ms from 'ms';
 
 const options = [
@@ -23,11 +23,11 @@ export default {
   options,
   timeout: ms('5m'),
   run: async (interaction: CommandInteraction, _client: Client) => {
-    if (!interaction.isCommand()) return;
-    const embed = new MessageEmbed()
+    if (!interaction.isChatInputCommand()) return;
+    const embed = new EmbedBuilder()
       .setTitle(`${interaction.member?.user.username} asked:`)
       .setDescription(interaction.options.getString('question') ?? 'No question provided')
-      .setColor('AQUA');
+      .setColor('Aqua');
     const sent = await interaction.channel?.send({ embeds: [embed] });
     sent?.startThread({
       name: `${interaction.member?.user.username}'s question`,
